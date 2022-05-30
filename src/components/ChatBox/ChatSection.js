@@ -1,8 +1,23 @@
+import Message from "./Message"
 
-const chatSection = () => {
+
+const ChatSection = ({ userName, messages }) => {
+    // console.log("chat: ", messages)
     return (
-        <div>chatSection</div>
+        <div className=" my-6 h-96 flex flex-col overflow-y-scroll overflow-x-hidden" >
+            {
+                messages.map((message, index) => {
+                    return <Message
+                        key={index}
+                        self={message.userName === userName}
+                        text={message.text}
+                        time={message.time}
+                    />
+
+                })
+            }
+        </div>
     )
 }
 
-export default chatSection
+export default ChatSection
